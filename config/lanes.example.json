@@ -1,0 +1,37 @@
+{
+  "approaches": [
+    {
+      "name": "Norte->Sur",
+      "count_lines": [
+        {
+          "p1": [
+            0,
+            90
+          ],
+          "p2": [
+            639,
+            90
+          ],
+          "dir": "down"
+        }
+      ]
+    },
+    {
+      "name": "Sur->Norte",
+      "count_lines": [
+        {
+          "p1": [
+            0,
+            90
+          ],
+          "p2": [
+            639,
+            90
+          ],
+          "dir": "up"
+        }
+      ]
+    }
+  ],
+  "zones": []
+}

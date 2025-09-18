@@ -1,0 +1,14 @@
+tracker_type: bytetrack
+
+track_high_thresh: 0.5    
+track_low_thresh: 0.1      
+new_track_thresh: 0.6      
+track_thresh: 0.5          
+
+match_thresh: 0.8          
+track_buffer: 30         
+max_age: 30              
+
+min_box_area: 10
+fuse_score: true
+mot20: false

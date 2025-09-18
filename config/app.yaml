@@ -1,0 +1,25 @@
+video_source: "C:/Users/david/Desarrolloproyectos/nuevo4_video.mp4" #0 
+conf: 0.15
+iou: 0.50
+classes_to_track: [0,1,2,3,4,5,6]              
+line_counting:
+  enabled: true
+  lanes_config: "config/lanes.example.json"
+  rate_window_s: 30 
+control:
+  min_green: 12
+  max_green: 60
+  green_extension: 3
+  clearance: 4
+  decision_interval: 10
+  density_thresholds: {low: 6, medium: 12, high: 20}
+  phase_change_penalty: 2.0
+  class_weights:
+    car: 1.0
+    motorbike: 0.6
+    bus: 2.5
+    truck: 2.0
+    van: 1.2
+    bicycle: 0.3
+    rickshaw: 0.8
+

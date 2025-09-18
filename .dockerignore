@@ -1,0 +1,10 @@
+.venv
+__pycache__/
+.pytest_cache/
+.coverage
+*.pyc
+data/datasets/
+data/raw/
+outputs/
+runs/
+yolo*.pt

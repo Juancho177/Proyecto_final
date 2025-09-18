@@ -1,0 +1,16 @@
+path: ../data/datasets/yolo
+
+train: train/images
+val: val/images
+test: test/images
+
+names:
+  0: bicycle
+  1: bus
+  2: car
+  3: motorbike
+  4: rickshaw
+  5: truck
+  6: van
+
+imgsz: 640
