@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package traffic;
+
+// Petición para procesar una fuente de video.
+message ProcessRequest {
+  string video_source = 1;   // "inputs/mi_video.mp4", "0" (webcam) o rtsp://...
+  string lanes_config = 2;   // opcional override; si vacío, usa el del app.yaml
+  string weights_path = 3;   // opcional; si vacío, usa best.pt por defecto
+  bool   save_output = 4;    // si true, el server guarda un MP4
+}
+
+// Tasas por aproximación (vehículos por minuto).
+message Rates {
+  map<string, double> vpm = 1; // p.ej. {"Norte": 12.3}
+}
+
+// Tiempos acumulados por estado.
+message PhaseTimes {
+  double verde = 1;
+  double amarillo = 2;
+  double rojo = 3;
+}
+
+// Actualización por “tick” del pipeline.
+message Tick {
+  string fase = 1;          // "Principal", etc.
+  string estado = 2;        // "VERDE", "AMARILLO", "ROJO"
+  int32  t_restante = 3;    // seg restantes del estado actual
+  Rates  rates = 4;         // vpm por aproximación
+  PhaseTimes tiempos = 5;   // acumulados en segundos
+  int32  frame_index = 6;   // índice de frame procesado (opcional)
+}
+
+// Resumen final de la corrida.
+message Summary {
+  double duracion_sesion = 1;   // seg
+  PhaseTimes tiempos = 2;       // acumulados finales
+  string output_video_path = 3; // si se guardó un MP4
+}
+
+// Stream de ticks y un cierre con summary.
+message ProcessResponse {
+  oneof payload {
+    Tick tick = 1;
+    Summary summary = 2;
+  }
+}
+
+// Salud
+message Empty {}
+message Health {
+  string status = 1;  // "SERVING", "NOT_SERVING"
+  string version = 2; // opcional
+}
+
+service TrafficService {
+  // Server-streaming: emite muchos Tick y termina con Summary
+  rpc ProcessVideo (ProcessRequest) returns (stream ProcessResponse);
+
+  // Salud del servicio
+  rpc HealthCheck (Empty) returns (Health);
+}

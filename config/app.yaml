@@ -8,7 +8,7 @@ line_counting:
   rate_window_s: 30 
 control:
   min_green: 12
-  max_green: 60
+  max_green: 54
   green_extension: 3
   clearance: 4
   decision_interval: 10

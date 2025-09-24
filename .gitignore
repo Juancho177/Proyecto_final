@@ -1,48 +1,41 @@
-
----
-
-```gitignore
+# Python
 __pycache__/
-*.py[cod]
+*.pyc
+*.pyo
 *.pyd
-*.so
 *.egg-info/
-.venv/
-venv/
-.env
-dist/
-build/
-pip-wheel-metadata/
+.dist/
+.build/
 
+# Virtual env
+.venv/
+env/
+
+# Tests
 .pytest_cache/
 .coverage
-coverage.xml
 htmlcov/
 
+# IDE
 .vscode/
 .idea/
-*.code-workspace
 
+# Datos pesados / salidas
 outputs/
-runs/
-data/
-datasets/
+mlruns/
+inputs/*.mp4
+inputs/*.avi
 *.mp4
-*.mov
 *.avi
-*.mkv
 
+# YOLO / pesos
 *.pt
-*.onnx
-*.engine
-models/**/*.pt
-models/**/*.onnx
-models/**/*.engine
+runs/
+models/**/runs*/
 
-Ultralytics/
-tmp/
-*.cache
+# Streamlit & cache
+.streamlit/
+.cache/
 
+# Docker
 *.log
-
-*.tar

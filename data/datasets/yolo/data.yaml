@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 7
+names: ['bicycle', 'bus', 'car', 'motorbike', 'rickshaw', 'truck', 'van']
+
+roboflow:
+  workspace: object-detection-sn8ac
+  project: ai-traffic-system
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/object-detection-sn8ac/ai-traffic-system/dataset/1
